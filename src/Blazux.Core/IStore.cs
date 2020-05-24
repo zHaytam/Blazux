@@ -16,7 +16,7 @@ namespace Blazux.Core
 
         public void Dispatch(IAction action);
 
-        public void OnComponentDisposed(IBlazuxComponent component);
+        public void Unsubscribe(IBlazuxComponent component);
 
     }
 }

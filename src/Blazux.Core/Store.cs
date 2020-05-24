@@ -42,7 +42,7 @@ namespace Blazux.Core
 
         public T UseSelector<T, C>(Func<TState, T> selector, C component, string fieldName) where C : IBlazuxComponent
         {
-            var field = component.GetType().GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
+            var field = typeof(C).GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);
             var typedSetter = field.BuildFieldSetter<C>();
             Action<object, object> setter = (c, v) => typedSetter((C)c, v);
 
@@ -93,7 +93,7 @@ namespace Blazux.Core
 
         private void ProcessNewState(TState newState)
         {
-            var componentsToReRender = new HashSet<IBlazuxComponent>();
+            var componentsToReRender = new List<IBlazuxComponent>(_subscriptionsByComponent.Count);
 
             foreach ((var component, var subscriptions) in _subscriptionsByComponent)
             {
@@ -104,7 +104,7 @@ namespace Blazux.Core
                     var oldValue = subscription.LatestValue;
                     var newValue = subscription.Selector(newState);
 
-                    if (oldValue?.Equals(newValue) == false)
+                    if (!Equals(oldValue, newValue))
                     {
                         subscription.LatestValue = newValue;
                         subscription.FieldSetter?.Invoke(component, newValue);
@@ -120,6 +120,6 @@ namespace Blazux.Core
                 component.StateHasChanged();
         }
 
-        public void OnComponentDisposed(IBlazuxComponent component) => _subscriptionsByComponent.Remove(component);
+        public void Unsubscribe(IBlazuxComponent component) => _subscriptionsByComponent.Remove(component);
     }
 }
