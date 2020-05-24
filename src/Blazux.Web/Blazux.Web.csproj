@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>zHaytam</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>A performant Flux/Redux state management library for Blazor, with selectors!</Description>
+    <RepositoryUrl>https://github.com/zHaytam/Blazux</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
