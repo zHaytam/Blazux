@@ -10,7 +10,7 @@ A performant Flux/Redux state management library that uses selectors to determin
 
 ## Getting started
 
-- [Documentation](https://github.com/zHaytam/Blazux): Tutorials, Features, etc...
+- [Documentation](https://github.com/zHaytam/Blazux/wiki): Tutorials, Features, etc...
 - [Samples](https://github.com/zHaytam/Blazux/tree/master/samples):
   - [PlainSample](https://github.com/zHaytam/Blazux/tree/master/samples/PlainSample): This shows you how you can use the `Blazux.Core` package to handle everything yourself. This is useful when you want for example your components to not inherit `BlazuxComponent`.
   - [WebCounterSample](https://github.com/zHaytam/Blazux/tree/master/samples/WebCounterSample): This shows you how you can start using `Blazux` (using the `Blazux.Web` package) with low boilerplate. This is what most developers would want to start with.
