@@ -33,7 +33,6 @@ namespace Blazux.Core.UnitTests
         {
             var state = new State(5);
             var store = new Store<State>(state);
-            var component = new Component();
             Func<State, Action, State> reducer = (s, a) => new State(s.Count + 1);
 
             store.AddReducer(reducer);
@@ -114,9 +113,31 @@ namespace Blazux.Core.UnitTests
 
             componentMock.Verify(c => c.StateHasChanged(), Times.Never());
         }
+
+        [Fact]
+        public void Dispatch_ShouldChangeState_WhenReducersFromAssemblyChangeIt()
+        {
+            var state = new State(5);
+            var store = new Store<State>(state);
+
+            store.AddReducersFromAssembly(typeof(Reducers).Assembly);
+            store.Dispatch(new Action());
+
+            Assert.NotEqual(state, store.State);
+            Assert.Equal(15, store.State.Count);
+        }
     }
 
-    internal class Component : IBlazuxComponent
+    static class Reducers
+    {
+        [Reducer]
+        public static State Handle(State state, Action action)
+        {
+            return new State(state.Count + 10);
+        }
+    }
+
+    class Component : IBlazuxComponent
     {
         private int _count;
         public int Count => _count;
@@ -124,12 +145,12 @@ namespace Blazux.Core.UnitTests
         public void StateHasChanged() { }
     }
 
-    internal class Action : IAction
+    class Action : IAction
     {
 
     }
 
-    internal class State
+    class State
     {
 
         public int Count { get; set; }

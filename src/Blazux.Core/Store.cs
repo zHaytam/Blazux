@@ -70,6 +70,24 @@ namespace Blazux.Core
             _reducersByAction[actionType].Add(func);
         }
 
+        public void AddReducersFromAssembly(Assembly assembly)
+        {
+            foreach (var type in assembly.GetTypes())
+            {
+                foreach (var method in type.GetMethods(BindingFlags.Static | BindingFlags.Public))
+                {
+                    if (!method.IsReducer<TState>(out var actionType))
+                        continue;
+
+                    if (!_reducersByAction.ContainsKey(actionType))
+                        _reducersByAction.Add(actionType, new List<Func<TState, IAction, TState>>());
+
+                    var reducerFunc = method.GetReducerFunc<TState>(actionType);
+                    _reducersByAction[actionType].Add(reducerFunc);
+                }
+            }
+        }
+
         public void Dispatch(IAction action)
         {
             var actionType = action.GetType();
