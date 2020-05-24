@@ -93,8 +93,12 @@ namespace Blazux.Core
 
         private void ProcessNewState(TState newState)
         {
+            var componentsToReRender = new HashSet<IBlazuxComponent>();
+
             foreach ((var component, var subscriptions) in _subscriptionsByComponent)
             {
+                var shouldReRender = false;
+
                 foreach (var subscription in subscriptions.Values)
                 {
                     var oldValue = subscription.LatestValue;
@@ -104,10 +108,16 @@ namespace Blazux.Core
                     {
                         subscription.LatestValue = newValue;
                         subscription.FieldSetter?.Invoke(component, newValue);
-                        component.StateHasChanged();
+                        shouldReRender = true;
                     }
                 }
+
+                if (shouldReRender)
+                    componentsToReRender.Add(component);
             }
+
+            foreach (var component in componentsToReRender)
+                component.StateHasChanged();
         }
 
         public void OnComponentDisposed(IBlazuxComponent component) => _subscriptionsByComponent.Remove(component);

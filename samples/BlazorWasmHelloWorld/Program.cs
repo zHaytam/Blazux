@@ -17,7 +17,11 @@ namespace PlainSample
 
             builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-            var store = new Store<State>(new State());
+            var store = new Store<State>(new State
+            {
+                CurrentWeather = new WeatherEntry()
+            });
+
             store.AddReducer<IncrementCounterAction>(IncrementCounterAction.Reducer);
             store.AddReducer<IncrementWeatherAction>(IncrementWeatherAction.Reducer);
             builder.Services.AddSingleton<IStore<State>>(store);
