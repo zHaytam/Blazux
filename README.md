@@ -51,7 +51,7 @@ When the `IncrementCounterAction` action is dispatched and the `CurrentCount` is
 
 ## Performance
 
-- `UseSelector` takes less than 0.1 ms, regardless of the number of components in the page.
+- `UseSelector` takes ~0.07 ms, regardless of the number of components in the page.
 - `Dispatch` takes ~0.7 ms for 100 subscribed components in the page.
 
 Basically, performance shouldn't be an issue regardless of how complex your application might be. You can look at the `PlainSample` project to see it in action.
