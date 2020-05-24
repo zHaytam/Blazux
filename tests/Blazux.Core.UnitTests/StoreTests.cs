@@ -120,15 +120,30 @@ namespace Blazux.Core.UnitTests
             var state = new State(5);
             var store = new Store<State>(state);
 
-            store.AddReducersFromAssembly(typeof(Reducers).Assembly);
+            store.AddReducersFromAssembly(typeof(StoreReducers).Assembly, typeof(ExtensionsReducers));
             store.Dispatch(new Action());
 
             Assert.NotEqual(state, store.State);
             Assert.Equal(15, store.State.Count);
         }
+
+        [Fact]
+        public void Dispatch_ShouldChainReducersWithNewStateEverytime()
+        {
+            var state = new State(5);
+            var store = new Store<State>(state);
+
+            store.AddReducer<Action>((s, a) => new State(s.Count, s.OtherValue + "1"));
+            store.AddReducer<Action>((s, a) => new State(s.Count + 1, s.OtherValue + "2"));
+            store.Dispatch(new Action());
+
+            Assert.NotEqual(state, store.State);
+            Assert.Equal(6, store.State.Count);
+            Assert.Equal("12", store.State.OtherValue);
+        }
     }
 
-    static class Reducers
+    static class StoreReducers
     {
         [Reducer]
         public static State Handle(State state, Action action)

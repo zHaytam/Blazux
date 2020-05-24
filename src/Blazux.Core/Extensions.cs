@@ -6,8 +6,6 @@ namespace Blazux.Core
 {
     public static class Extensions
     {
-        private static readonly Type _reducerAttributeType = typeof(ReducerAttribute);
-
         public static Action<T, object> BuildFieldSetter<T>(this FieldInfo field)
         {
             if (field.IsInitOnly)

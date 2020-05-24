@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -70,9 +71,9 @@ namespace Blazux.Core
             _reducersByAction[actionType].Add(func);
         }
 
-        public void AddReducersFromAssembly(Assembly assembly)
+        public void AddReducersFromAssembly(Assembly assembly, params Type[] typesToExclude)
         {
-            foreach (var type in assembly.GetTypes())
+            foreach (var type in assembly.GetTypes().Where(t => !typesToExclude.Contains(t)))
             {
                 foreach (var method in type.GetMethods(BindingFlags.Static | BindingFlags.Public))
                 {
