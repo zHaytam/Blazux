@@ -57,5 +57,5 @@ When the `IncrementCounterAction` action is dispatched and the `CurrentCount` is
 Basically, performance shouldn't be an issue regardless of how complex your application might be. You can look at the `PlainSample` project to see it in action.
 
 ## Feedback
-If you find a bug or you want to see a functionality in this library, feel free to open an issue in the repository!
+If you find a bug or you want to see a functionality in this library, feel free to open an issue in the repository!  
 Of course, PRs are very welcome.
