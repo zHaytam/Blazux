@@ -1,6 +1,6 @@
 # Blazux
 
-A performant Flux/Redux state management library that uses selectors to determine which components to re-render, just like Redux's `useSelector` hook.
+A performant Flux/Redux state management library for Blazor that uses selectors to determine which components to re-render, just like Redux's `useSelector` hook.
 
 |                    | Badges                                                                                                                                                                                                         |
 | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
