@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B4A461DA-920
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{B0E97FB7-FCE3-4E88-BB7C-B0438F5C60AB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlainSample", "samples\BlazorWasmHelloWorld\PlainSample.csproj", "{2B9CD8A6-B4DF-4BB1-9844-B1EEBD0355C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlainSample", "samples\PlainSample\PlainSample.csproj", "{2B9CD8A6-B4DF-4BB1-9844-B1EEBD0355C5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{387CF50F-181F-4FFB-B48D-98A3304714B9}"
 EndProject

@@ -8,6 +8,9 @@ namespace Blazux.Core
     {
         public static Action<T, object> BuildFieldSetter<T>(this FieldInfo field)
         {
+            if (field.IsInitOnly)
+                throw new Exception("Cannot build setter for a read only field.");
+
             var targetType = field.DeclaringType;
             var exInstance = Expression.Parameter(targetType, "t");
 
