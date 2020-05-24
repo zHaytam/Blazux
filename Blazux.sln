@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazux.Core.UnitTests", "te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazux.Web", "src\Blazux.Web\Blazux.Web.csproj", "{38486D39-5BA1-43FE-83DF-F3A98DE4AC88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCounterSample", "samples\WebCounterSample\WebCounterSample.csproj", "{08553CA9-BF41-4537-BF1A-9D2FEA4C6E8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{38486D39-5BA1-43FE-83DF-F3A98DE4AC88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38486D39-5BA1-43FE-83DF-F3A98DE4AC88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38486D39-5BA1-43FE-83DF-F3A98DE4AC88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08553CA9-BF41-4537-BF1A-9D2FEA4C6E8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08553CA9-BF41-4537-BF1A-9D2FEA4C6E8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08553CA9-BF41-4537-BF1A-9D2FEA4C6E8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08553CA9-BF41-4537-BF1A-9D2FEA4C6E8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{2B9CD8A6-B4DF-4BB1-9844-B1EEBD0355C5} = {B0E97FB7-FCE3-4E88-BB7C-B0438F5C60AB}
 		{39F276BE-A300-4BFF-8979-19A6BFA209D8} = {387CF50F-181F-4FFB-B48D-98A3304714B9}
 		{38486D39-5BA1-43FE-83DF-F3A98DE4AC88} = {B4A461DA-920C-44D4-ADEC-E58CA1FD16F6}
+		{08553CA9-BF41-4537-BF1A-9D2FEA4C6E8F} = {B0E97FB7-FCE3-4E88-BB7C-B0438F5C60AB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9CA25BF9-D43C-47A5-88C9-3D02DD3566AE}
