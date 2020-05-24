@@ -53,6 +53,8 @@ When the `IncrementCounterAction` action is dispatched and the `CurrentCount` is
 
 - `UseSelector` takes ~0.07 ms, regardless of the number of components in the page.
 - `Dispatch` takes ~0.7 ms for 100 subscribed components in the page.
+- Components are only re-rendered when a portion of the state they subscribed to changes.
+- If a component is subscribed to multiple portions of the state and more than one of them changes, the component is only re-rendered once.
 
 Basically, performance shouldn't be an issue regardless of how complex your application might be. You can look at the `PlainSample` project to see it in action.
 
