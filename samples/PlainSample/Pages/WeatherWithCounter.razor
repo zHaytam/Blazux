@@ -27,7 +27,7 @@
 
     void Increment() => Store.Dispatch(new IncrementWeatherAction());
 
-    public void Dispose() => Store.OnComponentDisposed(this);
+    public void Dispose() => Store.Unsubscribe(this);
 
     public new void StateHasChanged() => base.StateHasChanged();
 
