@@ -1,0 +1,34 @@
+﻿@using Blazux.Core;
+@using PlainSample.Store;
+@implements IDisposable
+@implements IBlazuxComponent
+
+@if (_entry != null)
+{
+    <h3 style="background-color: @Utils.GetRandomColor();">Weather @_entry.Country</h3>
+    <p>@_entry.Temperature</p>
+    <button class="btn btn-primary" @onclick="Increment">Click me</button>
+}
+
+<Counter />
+
+@code {
+
+    [Inject]
+    private IStore<State> Store { get; set; }
+    private WeatherEntry _entry;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        _entry = Store.UseSelector(s => s.CurrentWeather, this, nameof(_entry));
+    }
+
+    void Increment() => Store.Dispatch(new IncrementWeatherAction());
+
+    public void Dispose() => Store.OnComponentDisposed(this);
+
+    public new void StateHasChanged() => base.StateHasChanged();
+
+}
